@@ -79,18 +79,24 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // load assets needed in our game
+    // images
     this.load.image('black-title', 'assets/menu/black-title.jpg');
     this.load.image('curtain', 'assets/menu/curtain.jpg');
     this.load.image('main-title', 'assets/menu/main-title.jpg');
     this.load.image('selector', 'assets/menu/selector.png');
-    this.load.image('main-hud', 'assets/hud/main-hud.jpg');    
+    this.load.image('main-hud', 'assets/hud/main-hud.png');
+    this.load.image('overworld-1', 'assets/maps/overworld1.png')    
+ 
+   // sounds
+    this.load.audio('title', 'assets/sounds/title.mp3');
+    this.load.audio('overworld-1', 'assets/sounds/overworld-1.ogg');
+    this.load.audio('coin', 'assets/sounds/coin.ogg');
   }
 
   ready () {
     this.readyCount++;
     if (this.readyCount === 2) {
-      this.scene.start('Title');
+      this.scene.start('Overworld');
     }
   }
 };

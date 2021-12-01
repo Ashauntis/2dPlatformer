@@ -1,15 +1,17 @@
-import 'phaser';
+import "phaser";
 
 export default class HUDscene extends Phaser.Scene {
-  constructor () {
-    super('HUD');
+  constructor() {
+    super("HUD");
   }
 
-  config = {
-    height: 100
-  }
+  create() {
+    this.add.image(236 / 2 * window.local.gameScale, 268 / 2 * window.local.gameScale, "main-hud");
 
-  create () {
-      this.add.image(0, 0, 'main-hud')
+    //camera
+    const cam = this.cameras.main;
+    cam.setViewport(0, 0, 256 * window.local.gameScale, 224  * window.local.gameScale);
+    cam.zoom = window.local.gameScale;
   }
-};0
+}
+
