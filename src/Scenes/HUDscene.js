@@ -6,12 +6,22 @@ export default class HUDscene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(236 / 2 * window.local.gameScale, 268 / 2 * window.local.gameScale, "main-hud");
+    this.add.image(90,  198, "main-hud");
+    this.add.image(206, 198, 'card-cells');
+    this.add.image(26, 202, 'm-ind');
 
-    //camera
-    const cam = this.cameras.main;
-    cam.setViewport(0, 0, 256 * window.local.gameScale, 224  * window.local.gameScale);
-    cam.zoom = window.local.gameScale;
+    //cameras
+    this.cameras.main.setVisible(false);
+
+    this.cameras.hudCam = this.cameras.fromJSON({
+      name: 'hudCam',
+      x:0, 
+      y:0, 
+      width: 256 * window.local.gameScale, 
+      height: 224 * window.local.gameScale,
+      scrollX:  -128 * (window.local.gameScale - 1),
+      scrollY: -112 * (window.local.gameScale - 1),
+      zoom: window.local.gameScale
+  })
   }
 }
-

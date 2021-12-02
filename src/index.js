@@ -24,8 +24,10 @@ class Game extends Phaser.Game {
 }
 
 //Globals
-var lifeCount = 3;
-var frameCounter = 0;
+window.multiplayer = false;
+window.p1LifeCount = 4;
+window.p2LifeCount = 4;
+window.frameCounter = 0;
 
 // reference our local settings in the global window object
 window.local = local;

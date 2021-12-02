@@ -86,6 +86,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('selector', 'assets/menu/selector.png');
     this.load.image('main-hud', 'assets/hud/main-hud.png');
     this.load.image('overworld-1', 'assets/maps/overworld1.png')    
+    this.load.image('card-cells', 'assets/hud/card-cells.png');
+    this.load.image('m-ind', 'assets/hud/m-ind.png')
  
    // sounds
     this.load.audio('title', 'assets/sounds/title.mp3');
@@ -96,7 +98,7 @@ export default class PreloaderScene extends Phaser.Scene {
   ready () {
     this.readyCount++;
     if (this.readyCount === 2) {
-      this.scene.start('Overworld');
+      this.scene.start('Title');
     }
   }
 };

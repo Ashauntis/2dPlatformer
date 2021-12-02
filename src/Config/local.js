@@ -1,3 +1,3 @@
 export default {
-    gameScale: 4
+    gameScale: 3
 };
