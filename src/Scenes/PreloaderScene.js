@@ -11,7 +11,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload () {
     // add logo image
-    this.add.image(400, 200, 'logo');
+    this.add.image(400, 150, 'logo');
 
     // display progress bar
     var progressBar = this.add.graphics();
@@ -80,9 +80,10 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
     // images
-    this.load.image('black-title', 'assets/menu/black-title.jpg');
-    this.load.image('curtain', 'assets/menu/curtain.jpg');
-    this.load.image('main-title', 'assets/menu/main-title.jpg');
+    this.load.image('paused', 'assets/hud/pause-menu.png');
+    this.load.image('stage', 'assets/menu/stage2.png');
+    this.load.image('curtain', 'assets/menu/curtain.png');
+    this.load.image('title', 'assets/menu/title.png');
     this.load.image('selector', 'assets/menu/selector.png');
     this.load.image('main-hud', 'assets/hud/main-hud.png');
     this.load.image('overworld-1', 'assets/maps/overworld1.png')    

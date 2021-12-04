@@ -5,7 +5,7 @@ import OverworldMap from './Scenes/OverworldMap';
 import BootScene from './Scenes/BootScene';
 import PreloaderScene from './Scenes/PreloaderScene';
 import TitleScene from './Scenes/TitleScene';
-import OptionsScene from './Scenes/OptionsScene';
+import PauseScene from './Scenes/PauseScene';
 import CreditsScene from './Scenes/CreditsScene';
 import HUDscene from './Scenes/HUDscene';
 
@@ -15,7 +15,7 @@ class Game extends Phaser.Game {
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Title', TitleScene);
-    this.scene.add('Options', OptionsScene);
+    this.scene.add('Pause', PauseScene);
     this.scene.add('Credits', CreditsScene);
     this.scene.add('Overworld', OverworldMap);
     this.scene.add('HUD', HUDscene);
