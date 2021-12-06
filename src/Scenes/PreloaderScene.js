@@ -89,11 +89,19 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('overworld-1', 'assets/maps/overworld1.png')    
     this.load.image('card-cells', 'assets/hud/card-cells.png');
     this.load.image('m-ind', 'assets/hud/m-ind.png')
+    this.load.image('red-line-42', 'assets/hud/10x42-red-line.png');
+    this.load.image('red-line-58', 'assets/hud/10x58-red-line.png');
+    this.load.spritesheet('charspritesheet', 'assets/characters/character-sprites.png', {
+      frameWidth: 16, 
+      frameHeight: 24
+    });
  
    // sounds
     this.load.audio('title', 'assets/sounds/title.mp3');
     this.load.audio('overworld-1', 'assets/sounds/overworld-1.ogg');
     this.load.audio('coin', 'assets/sounds/coin.ogg');
+    this.load.audio('map-travel', 'assets/sounds/map-travel.ogg');
+    this.load.audio('pause', 'assets/sounds/pause.ogg');    
   }
 
   ready () {
