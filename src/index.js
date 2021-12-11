@@ -8,6 +8,7 @@ import TitleScene from './Scenes/TitleScene';
 import PauseScene from './Scenes/PauseScene';
 import CreditsScene from './Scenes/CreditsScene';
 import HUDscene from './Scenes/HUDscene';
+import W1L1 from './Scenes/W1L1';
 
 class Game extends Phaser.Game {
   constructor () {
@@ -18,6 +19,7 @@ class Game extends Phaser.Game {
     this.scene.add('Credits', CreditsScene);
     this.scene.add('Overworld', OverworldMap);
     this.scene.add('HUD', HUDscene);
+    this.scene.add('W1L1', W1L1);
     this.scene.add('Pause', PauseScene);
     this.scene.start('Boot');
   }

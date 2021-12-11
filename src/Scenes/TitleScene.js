@@ -33,6 +33,7 @@ export default class TitleScene extends Phaser.Scene {
   }
 
   update() {
+
     if (this.curtain) {
       if (this.curtain.y > -94) {
         this.curtain.setVelocityY(-100);
@@ -47,14 +48,14 @@ export default class TitleScene extends Phaser.Scene {
         this.position = 1;
         console.log(this.position);
       } else this.position++;
-      // this.movesound.play();
+      this.movesound.play();
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.cursors.up)) {
       if (this.position <= 1) {
         this.position = 2;
       } else this.position--;
-      // this.movesound.play();
+      this.movesound.play();
     }
 
     if(!this.started) {
@@ -80,6 +81,5 @@ export default class TitleScene extends Phaser.Scene {
 
   startGame() {
     this.scene.start("Overworld");
-    // this.scene.launch("HUD");
   }
 }
