@@ -45,7 +45,6 @@ export default class W1L1 extends Phaser.Scene {
     this.music.addMarker({name: 'loopstart', start: 3.2, duration: 76.8})
     this.music.play('intro', {volume: 0.25});
     this.time.delayedCall(3200, this.playLoop, null, this);
-    // this.music.on('complete', this.playLoop, this);
 
     //define mario
     this.mario = this.physics.add.sprite(50, 400, "smallmario", 2);

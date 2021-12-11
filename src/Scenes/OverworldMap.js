@@ -12,27 +12,27 @@ export default class OverworldMap extends Phaser.Scene {
     this.move_start = 0;
     this.move_time = 400;
     this.moving = false;
-    this.locations.push(new MapPoint('start', 40,   58, null, '1,1', null, null));
-    this.locations.push(new MapPoint('1,0',   72,   26, null, '2,0', '1,1', null));
-    this.locations.push(new MapPoint('2,0',   104,  26, null, '3,0', null, '1,0'));
-    this.locations.push(new MapPoint('3,0',   136,  26, null, '4,0', '3,1', '2,0'));
-    this.locations.push(new MapPoint('4,0',   168,  26, null, '5,0', null, '3,0'));
-    this.locations.push(new MapPoint('5,0',   200,  26, null, null, '5,1', '4,0'));
-    this.locations.push(new MapPoint('1,1',   72,   58, '1,0', null, null, 'start'));
-    this.locations.push(new MapPoint('3,1',   136,  58, '3,0', '4,1', '3,2', null));
-    this.locations.push(new MapPoint('4,1',   168,  58, null, '5,1', null, '3,1'));
-    this.locations.push(new MapPoint('5,1',   200,  58, '5,0', null, null, '4,1'));
-    this.locations.push(new MapPoint('1,2',   72,   90, null, '2,2', '1,3', null));
-    this.locations.push(new MapPoint('2,2',   104,  90, null, '3,2', null, '1,2'));
-    this.locations.push(new MapPoint('3,2',   136,  90, '3,1', null, null, '2,2'));
-    this.locations.push(new MapPoint('1,3',   72,   122, '1,2', null, '1,4', null));
-    this.locations.push(new MapPoint('2,3',   104,  122, null, '3,3', null, null));
-    this.locations.push(new MapPoint('3,3',   136,  122, null, '4,3', '3,4', '2,3'));
-    this.locations.push(new MapPoint('4,3',   168,  122, null, '5,3', null, '3,3'));
-    this.locations.push(new MapPoint('5,3',   200,  122, null, null, null, '4,3'));
-    this.locations.push(new MapPoint('1,4',   72,   154, '1,3', '2,4', null, null));
-    this.locations.push(new MapPoint('2,4',   104,  154, null, '3,4', null, '1,4'));
-    this.locations.push(new MapPoint('3,4',   136,  154, '3,3', null, null, '2,4'));
+    this.locations.push(new MapPoint('start', null, 40,   58, null, '1,1', null, null));
+    this.locations.push(new MapPoint('1,0', 'W1L1',  72,   26, null, '2,0', '1,1', null));
+    this.locations.push(new MapPoint('2,0', null,  104,  26, null, '3,0', null, '1,0'));
+    this.locations.push(new MapPoint('3,0', null,  136,  26, null, '4,0', '3,1', '2,0'));
+    this.locations.push(new MapPoint('4,0', null,  168,  26, null, '5,0', null, '3,0'));
+    this.locations.push(new MapPoint('5,0', null,  200,  26, null, null, '5,1', '4,0'));
+    this.locations.push(new MapPoint('1,1', null,  72,   58, '1,0', null, null, 'start'));
+    this.locations.push(new MapPoint('3,1', null,  136,  58, '3,0', '4,1', '3,2', null));
+    this.locations.push(new MapPoint('4,1', null,  168,  58, null, '5,1', null, '3,1'));
+    this.locations.push(new MapPoint('5,1', null,   200,  58, '5,0', null, null, '4,1'));
+    this.locations.push(new MapPoint('1,2', null,  72,   90, null, '2,2', '1,3', null));
+    this.locations.push(new MapPoint('2,2', null,  104,  90, null, '3,2', null, '1,2'));
+    this.locations.push(new MapPoint('3,2', null,  136,  90, '3,1', null, null, '2,2'));
+    this.locations.push(new MapPoint('1,3', null,  72,   122, '1,2', null, '1,4', null));
+    this.locations.push(new MapPoint('2,3', null,  104,  122, null, '3,3', null, null));
+    this.locations.push(new MapPoint('3,3', null,  136,  122, null, '4,3', '3,4', '2,3'));
+    this.locations.push(new MapPoint('4,3', null,  168,  122, null, '5,3', null, '3,3'));
+    this.locations.push(new MapPoint('5,3', null,  200,  122, null, null, null, '4,3'));
+    this.locations.push(new MapPoint('1,4', null,  72,   154, '1,3', '2,4', null, null));
+    this.locations.push(new MapPoint('2,4', null,  104,  154, null, '3,4', null, '1,4'));
+    this.locations.push(new MapPoint('3,4', null,  136,  154, '3,3', null, null, '2,4'));
   }
 
   create() {
@@ -40,14 +40,11 @@ export default class OverworldMap extends Phaser.Scene {
     this.overworldmusic = this.game.music.add('overworld-1', {loop: true, volume: 0.5});
     this.overworldmusic.play();
     this.movesound = window.game.effects.add('map-travel'); 
+    this.levelstart = window.game.effects.add('levelstart');
 
     //keyboard
     this.cursors = this.input.keyboard.createCursorKeys();
     this.cursors.p = this.input.keyboard.addKey("p");
-    this.cursors.right = this.input.keyboard.addKey("right");
-    this.cursors.left = this.input.keyboard.addKey("left");
-    this.cursors.up = this.input.keyboard.addKey("up");
-    this.cursors.down = this.input.keyboard.addKey("down");
 
     this.map = this.add.image(128,  98, "overworld-1");
   
@@ -121,6 +118,14 @@ export default class OverworldMap extends Phaser.Scene {
         }
       }
 
+      //select a level
+      if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
+        if(this.current_location === '1,0' && !this.levelselected) {
+          this.levelstart.on('complete', this.startlevel, this);
+          this.levelstart.play();
+        }
+      }
+
       // handle moving the player sprite
       if(this.current_location !== this.current_point.name) {
         this.locations.forEach(location => {
@@ -141,5 +146,12 @@ export default class OverworldMap extends Phaser.Scene {
     this.mario.y = this.current_point.y;
     this.moving = false;
     this.mario.setVelocity(0, 0);
+  }
+
+  startlevel(){
+    console.log('Attempting to start scene', this.current_point.scenekey);
+    this.scene.pause('Overworld');
+    this.overworldmusic.stop();
+    this.scene.launch(this.current_point.scenekey);
   }
 }

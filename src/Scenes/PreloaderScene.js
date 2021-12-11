@@ -129,12 +129,13 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio("jump", "assets/sounds/jump.ogg");
     this.load.audio('lose-life', 'assets/sounds/lose-life.ogg');
     this.load.audio('world1leveltheme', 'assets/sounds/world1leveltheme.ogg');
+    this.load.audio('levelstart', 'assets/sounds/levelstart.ogg');
   }
 
   ready() {
     this.readyCount++;
     if (this.readyCount === 2) {
-      this.scene.start("W1L1");
+      this.scene.start("Title");
     }
   }
 }

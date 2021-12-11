@@ -1,6 +1,7 @@
 export default class MapPoint {
-    constructor(name, x, y, n, e, s, w) {
+    constructor(name, scenekey, x, y, n, e, s, w) {
         this.name = name;
+        this.scenekey = scenekey;
         this.x = x;
         this.y = y;
         this.n = n;
