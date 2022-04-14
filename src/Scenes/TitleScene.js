@@ -61,6 +61,7 @@ export default class TitleScene extends Phaser.Scene {
     if(!this.started) {
       if (this.cursors.space.isDown || this.cursors.enter.isDown) {
         if (this.position == 1) {
+          console.log('Spacebar pressed!');
           this.titlemusic.stop();
           this.coin.play();
           this.started = true;
