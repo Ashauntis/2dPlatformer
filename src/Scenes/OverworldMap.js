@@ -121,6 +121,7 @@ export default class OverworldMap extends Phaser.Scene {
       //select a level
       if (Phaser.Input.Keyboard.JustDown(this.cursors.space)) {
         if(this.current_location === '1,0' && !this.levelselected) {
+          console.log('Spacebar pressed!');
           this.levelstart.on('complete', this.startlevel, this);
           this.levelstart.play();
         }
